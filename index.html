@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>数独 100 关</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <section class="topbar">
+        <div>
+          <p class="eyebrow">Sudoku Run</p>
+          <h1>数独 100 关</h1>
+        </div>
+        <div class="stats">
+          <div>
+            <span>关卡</span>
+            <strong id="levelLabel">1 / 100</strong>
+          </div>
+          <div>
+            <span>难度</span>
+            <strong id="difficultyLabel">入门</strong>
+          </div>
+          <div>
+            <span>用时</span>
+            <strong id="timer">00:00</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="layout">
+        <section class="game-panel" aria-label="数独棋盘">
+          <div class="board-shell">
+            <div id="board" class="board"></div>
+            <canvas id="paintCanvas" class="paint-canvas" aria-label="标注画布"></canvas>
+          </div>
+
+          <div class="number-pad" id="numberPad" aria-label="数字键盘"></div>
+
+          <div class="toolbar">
+            <button id="hintBtn" type="button">提示 <span id="hintState">1</span></button>
+            <button id="paintBtn" type="button" aria-pressed="false">画笔</button>
+            <button id="eraserBtn" type="button" aria-pressed="false">橡皮</button>
+            <button id="clearPaintBtn" type="button">清除标注</button>
+            <button id="checkBtn" type="button">检查</button>
+            <button id="resetBtn" type="button">重开</button>
+            <button id="musicBtn" type="button" aria-pressed="false">音乐</button>
+          </div>
+
+          <p id="message" class="message" aria-live="polite"></p>
+        </section>
+
+        <aside class="side-panel">
+          <div class="level-card">
+            <label for="levelSelect">选择关卡</label>
+            <div class="level-row">
+              <button id="prevBtn" type="button">上一关</button>
+              <select id="levelSelect"></select>
+              <button id="nextBtn" type="button">下一关</button>
+            </div>
+          </div>
+
+          <div class="leaderboard">
+            <div class="board-title">
+              <h2>排行榜</h2>
+              <select id="rankMode" aria-label="排行榜类型">
+                <option value="level">本关</option>
+                <option value="global">全关</option>
+              </select>
+            </div>
+            <ol id="rankList"></ol>
+          </div>
+
+          <div class="progress">
+            <div class="board-title">
+              <h2>通关进度</h2>
+              <strong id="progressLabel">0 / 100</strong>
+            </div>
+            <div class="progress-track">
+              <div id="progressBar"></div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <dialog id="completeDialog">
+      <form method="dialog" class="dialog-card">
+        <h2 id="completeTitle">完成！</h2>
+        <div id="rewardBadge" class="reward-badge" aria-hidden="true">★ WJK ★</div>
+        <p id="completeText"></p>
+        <label for="playerName">名字</label>
+        <input id="playerName" maxlength="16" autocomplete="nickname" value="玩家" />
+        <div class="dialog-actions">
+          <button id="saveRankBtn" value="save" type="submit">保存成绩</button>
+          <button id="nextLevelBtn" class="primary-action" value="next" type="button">进入下一关</button>
+        </div>
+      </form>
+    </dialog>
+
+    <script src="game.js"></script>
+  </body>
+</html>
