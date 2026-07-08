@@ -19,6 +19,12 @@
   box-sizing: border-box;
 }
 
+html {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -606,6 +612,87 @@ dialog::backdrop {
   }
 }
 
+@media (max-width: 768px) {
+  .app {
+    width: min(100% - 20px, 760px);
+    max-width: 760px;
+    padding: 14px 0 18px;
+  }
+
+  .topbar {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+
+  .topbar > div:first-child {
+    text-align: center;
+  }
+
+  .stats {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .stats div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .game-panel,
+  .side-panel {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .board-shell {
+    width: min(92vw, 500px);
+    max-width: 100%;
+  }
+
+  .number-pad,
+  .toolbar,
+  .message {
+    width: min(92vw, 500px);
+    max-width: 100%;
+  }
+
+  .number-pad {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .toolbar {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  button,
+  .level-row select,
+  .board-title select,
+  .dialog-card input {
+    min-height: 48px;
+  }
+
+  .cell {
+    aspect-ratio: 1 / 1;
+    font-size: clamp(1.08rem, 5.8vw, 1.9rem);
+  }
+
+  .side-panel {
+    gap: 12px;
+  }
+}
+
 @media (max-width: 600px) {
   html,
   body {
@@ -626,8 +713,8 @@ dialog::backdrop {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 94vw;
-    max-width: 94vw;
+    width: 96vw;
+    max-width: 96vw;
     padding: 10px 0 18px;
   }
 
@@ -702,12 +789,12 @@ dialog::backdrop {
     width: 100%;
     max-width: 100%;
     border-radius: 16px;
-    padding: 10px;
+    padding: 8px;
   }
 
   .board-shell {
     width: min(100%, 92vw);
-    max-width: 92vw;
+    max-width: 100%;
     padding: 4px;
     border-width: 2px;
     border-radius: 14px;
@@ -745,7 +832,7 @@ dialog::backdrop {
   .toolbar,
   .message {
     width: min(100%, 92vw);
-    max-width: 92vw;
+    max-width: 100%;
   }
 
   .number-pad {
@@ -755,7 +842,7 @@ dialog::backdrop {
   }
 
   .number-pad button {
-    min-height: 52px;
+    min-height: 54px;
     aspect-ratio: auto;
     font-size: 1.14rem;
   }
@@ -768,7 +855,7 @@ dialog::backdrop {
   }
 
   button {
-    min-height: 52px;
+    min-height: 54px;
     padding: 0 14px;
     font-size: 0.98rem;
   }
@@ -782,7 +869,17 @@ dialog::backdrop {
   .level-row select,
   .board-title select,
   .dialog-card input {
-    min-height: 52px;
+    min-height: 54px;
+  }
+
+  .board-title,
+  .dialog-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .board-title {
+    flex-direction: column;
+    align-items: stretch;
   }
 
   .side-panel {
@@ -808,16 +905,16 @@ dialog::backdrop {
 
 @media (max-width: 430px) {
   .app {
-    width: 95vw;
-    max-width: 95vw;
+    width: 96vw;
+    max-width: 96vw;
   }
 
   .board-shell,
   .number-pad,
   .toolbar,
   .message {
-    width: min(100%, 93vw);
-    max-width: 93vw;
+    width: min(100%, 94vw);
+    max-width: 100%;
   }
 
   .cell {
